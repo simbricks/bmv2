@@ -158,6 +158,12 @@ OptionsParser::parse(int argc, char *argv[], TargetParserIface *tp,
        "Maximum number of interfaces that can be bound to the switch; "
        "this is not an upper bound on each port number, which can be arbitrary."
        " Depending on the target, this max value may or may not be enforced.")
+      ("use-simbricks", "enable SimBricks integration")
+      ("sync-eth", "enable SimBricks synchronization")
+      ("sync-interval", po::value<uint64_t>(),
+      "SimBricks synchronization interval in ns")
+      ("link-latency", po::value<uint64_t>(),
+      "SimBricks link latency in ns")
       ;  // NOLINT(whitespace/semicolon)
 
   po::options_description hidden;
@@ -412,6 +418,19 @@ OptionsParser::parse(int argc, char *argv[], TargetParserIface *tp,
     outstream << "Calling target program-options parser\n";
     if (tp->parse(to_pass_further, &outstream)) {
       outstream << "Target parser returned an error\n";
+    }
+  }
+
+  if (vm.count("use-simbricks")) {
+    use_simbricks = true;
+    if (vm.count("sync-eth")) {
+      sync_eth = true;
+    }
+    if (vm.count("sync-interval")) {
+      sync_inverval = vm["sync-interval"].as<uint64_t>();
+    }
+    if (vm.count("link-latency")) {
+      link_latency = vm["link-latency"].as<uint64_t>();
     }
   }
 }

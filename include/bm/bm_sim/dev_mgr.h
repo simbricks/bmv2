@@ -45,10 +45,11 @@
 #include "packet_handler.h"
 #include "port_monitor.h"
 
+#include <simbricks/base/cxxatomicfix.h>
 extern "C"
 {
 #include <simbricks/network/if.h>
-}
+};
 
 namespace bm
 {
@@ -185,7 +186,8 @@ namespace bm
 
     void set_dev_mgr_simbricks(
         device_id_t device_id,
-        struct SimbricksBaseIfParams params,
+        const struct SimbricksBaseIfParams &params,
+        bool sync,
         std::shared_ptr<TransportIface> notifications_transport = nullptr);
 
     // The interface names are instead interpreted as file names.
