@@ -96,7 +96,7 @@ $(top_builddir)/src/bm_runtime/libbmruntime.la \
 $(top_builddir)/thrift_src/libruntimestubs.la \
 libsimpleswitch.la \
 libsimpleswitch_thrift.la \
--L$(top_builddir)/../simbricks/lib \
+-L$(top_builddir)/../../../lib \
 -lsimbricks
 
 simple_switch_SOURCES = main.cpp

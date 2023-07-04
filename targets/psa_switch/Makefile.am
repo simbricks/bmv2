@@ -80,7 +80,7 @@ $(top_builddir)/src/bm_runtime/libbmruntime.la \
 $(top_builddir)/thrift_src/libruntimestubs.la \
 libpsaswitch.la \
 libpsaswitch_thrift.la \
--L$(top_builddir)/../simbricks/lib \
+-L$(top_builddir)/../../../lib \
 -lsimbricks
 
 psa_switch_SOURCES = main.cpp
