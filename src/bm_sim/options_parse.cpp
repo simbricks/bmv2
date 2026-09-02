@@ -161,9 +161,9 @@ OptionsParser::parse(int argc, char *argv[], TargetParserIface *tp,
       ("use-simbricks", "enable SimBricks integration")
       ("sync-eth", "enable SimBricks synchronization")
       ("sync-interval", po::value<uint64_t>(),
-      "SimBricks synchronization interval in ns")
+      "SimBricks synchronization interval in ps")
       ("link-latency", po::value<uint64_t>(),
-      "SimBricks link latency in ns")
+      "SimBricks link latency in ps")
       ;  // NOLINT(whitespace/semicolon)
 
   po::options_description hidden;
